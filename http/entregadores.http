@@ -2,6 +2,9 @@ GET http://localhost:3000/entregadores
 
 ###
 
+GET http://localhost:3000/entregadores/user/1
+
+###
 
 POST http://localhost:3000/entregadores
 Content-Type: application/json
@@ -9,9 +12,9 @@ Content-Type: application/json
 {
     "id_user": "3",
     "nome": "Monica",
-    "cpfCnpj": "12345678910",
+    "cpfCnpj": "123456e78910",
     "celular": "11999999999",
-    "email": "teste@teste.com",
+    "email": "teste1@teste.com",
     "idade": 37,
     "endereco": "Rua dos bobos",
     "numero": "0",

@@ -11,9 +11,24 @@ class EntregadorRepository {
         return await database('entregador').select();
     }
 
+    async findByUserWithEntregador(id) {
+        return await database('entregador')
+            .select(["users.username", "users.type", "entregador.*"])
+            .where("entregador.id", "=", id)
+            .innerJoin('users', 'users.id', 'entregador.id_user')
+            .first();
+    
+    }
+
     async findByCpfCnpj(cpfCnpj) {
         return await database('entregador').select()
             .where({ cpfCnpj })
+            .first();
+    }
+
+    async findByEmail(email) {
+        return await database('entregador').select()
+            .where({ email })
             .first();
     }
 }
