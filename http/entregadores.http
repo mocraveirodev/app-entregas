@@ -1,0 +1,22 @@
+GET http://localhost:3000/entregadores
+
+###
+
+
+POST http://localhost:3000/entregadores
+Content-Type: application/json
+
+{
+    "id_user": "3",
+    "nome": "Monica",
+    "cpfCnpj": "12345678910",
+    "celular": "11999999999",
+    "email": "teste@teste.com",
+    "idade": 37,
+    "endereco": "Rua dos bobos",
+    "numero": "0",
+    "complemento": "",
+    "bairro": "Vale do Nada",
+    "veiculo": "bicicleta",
+    "placa": ""
+}
