@@ -6,6 +6,16 @@ class UserRepository {
 
         return id;
     }
+
+    async findAll() {
+        return await database('users').select();
+    }
+
+    async findByUsername(username) {
+        return await database('users').select()
+            .where({ username })
+            .first();
+    }
 }
 
 export default new UserRepository();
