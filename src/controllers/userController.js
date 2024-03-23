@@ -1,28 +1,21 @@
-import userRepository from "../repositories/UserRepository.js";
-import userValidator from "../validators/user.js";
+import userService from "../services/userService.js";
+import errorHandler from "../util/errorHandler.js";
 
 class UserController {
     async save(req, res) {
-        const user = req.body;
-        const error = userValidator(res, user);
+        try {
+            const user = req.body;
+        
+            const id = await userService.save(user);
 
-        if (error) {
-            return res.status(422).json(error);
+            return res.status(201).json({ id });
+        } catch (error) {
+            return errorHandler(error, res);
         }
-
-        const userExists = await userRepository.findByUsername(user.username);
-
-        if (userExists) {
-            return res.status(409).json({ error: "User already exists" });
-        }
-
-        const id = await userRepository.save(user);
-
-        return res.status(201).json({ id });
     }
 
     async findAll(req, res) {
-        const users = await userRepository.findAll();
+        const users = await userService.findAll();
         return res.status(200).json(users);
     }
 }
